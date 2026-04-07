@@ -13,4 +13,9 @@ public class Weapon extends Loot {
     public String getEffectDescription(){
         return String.format("A %s %s that deals %d points of damage.", getRarity(), getName(), damage);
     }
+
+    @Override
+    public String asCsvRecord(){
+        return String.format("Weapon,%s,%s,%d", getName(), getRarity(), damage);
+    }
 }

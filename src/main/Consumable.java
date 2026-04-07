@@ -13,4 +13,9 @@ public class Consumable extends Loot{
     public String getEffectDescription(){
         return String.format("A %s %s that has %d uses left.", getRarity(), getName(), restoreAmount);
     }
+
+    @Override
+    public String asCsvRecord(){
+        return String.format("Consumable,%s,%s,%d", getName(), getRarity(), restoreAmount);
+    }
 }
