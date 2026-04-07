@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.Scanner;
+import java.io.PrintWriter;
 
 /**
  * Manages the inventory of RPG Loot.
@@ -50,8 +51,16 @@ public class LootManager {
         
     }
 
-    public void save(String END_FILE_PATH){
+    public void save(String END_FILE_PATH) throws FileNotFoundException {
 
+        PrintWriter fileWriter = new PrintWriter(new File(END_FILE_PATH));
+
+        fileWriter.println("TYPE, NAME, RARITY, SPECIAL_1");
+
+        for(Loot loot : inventory) {
+            fileWriter.println(loot.asCsvRecord());
+        }
+        fileWriter.close();
     }
 
     public void add(Loot loot){
