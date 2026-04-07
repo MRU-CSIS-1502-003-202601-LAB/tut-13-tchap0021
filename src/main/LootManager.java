@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
+import java.io.File;
 
 /**
  * Manages the inventory of RPG Loot.
@@ -25,5 +26,21 @@ public class LootManager {
         }
         System.out.println("-------------------------");
         System.out.println();
+    }
+
+    public static LootManager load(String START_FILE_PATH) throws FileNotFoundException {
+
+        LootManager lootmanager = new LootManager();
+
+        return lootmanager;
+        
+    }
+
+    public void save(String END_FILE_PATH){
+
+    }
+
+    public void add(Loot loot){
+
     }
 }
