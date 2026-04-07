@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.File;
+import java.util.Scanner;
 
 /**
  * Manages the inventory of RPG Loot.
@@ -32,6 +33,19 @@ public class LootManager {
 
         LootManager lootmanager = new LootManager();
 
+        Scanner fileScanner = new Scanner(new File(START_FILE_PATH));
+
+        fileScanner.nextLine();
+
+        while(fileScanner.hasNextLine()){
+            String[] csvParts = fileScanner.nextLine().split(",");
+
+            Loot loot = LootFactory.create(csvParts);
+            lootmanager.add(loot);
+        }
+
+        fileScanner.close();
+
         return lootmanager;
         
     }
@@ -41,6 +55,9 @@ public class LootManager {
     }
 
     public void add(Loot loot){
+        if(loot != null){
+            inventory.add(loot);
+        }
 
     }
 }
